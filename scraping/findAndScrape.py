@@ -31,6 +31,7 @@ SEASON 1
 <li><a href="/wiki/Transcript_of_Let_%27Em_Eat_Cake" title="Transcript of Let &#39;Em Eat Cake" season="1">Transcript of Let 'Em Eat Cake</a></li></ol>
 
 SEASON 2
+<li><a href="/wiki/Transcript_of_The_One_Where_Michael_Leaves" title="Transcript of The One Where Michael Leaves" season="2">Transcript of The One Where Michael Leaves</a></li>
 <li><a href="/wiki/Transcript_of_The_One_Where_They_Build_a_House" title="Transcript of The One Where They Build a House" season="2">Transcript of The One Where They Build a House</a></li>
 <li><a href="/wiki/Transcript_of_%C2%A1Amigos!" title="Transcript of ¡Amigos!" season="2">Transcript of ¡Amigos!</a></li>
 <li><a href="/wiki/Transcript_of_Good_Grief" title="Transcript of Good Grief" season="2">Transcript of Good Grief</a></li>
@@ -50,6 +51,7 @@ SEASON 2
 <li><a href="/wiki/Transcript_of_Righteous_Brothers" title="Transcript of Righteous Brothers" season="2">Transcript of Righteous Brothers</a></li></ol>
 
 SEASON 3
+<li><a href="/wiki/Transcript_of_The_Cabin_Show" title="Transcript of The Cabin Show" season="3">Transcript of The Cabin Show</a></li>
 <li><a href="/wiki/Transcript_of_For_British_Eyes_Only" title="Transcript of For British Eyes Only" season="3">Transcript of For British Eyes Only</a></li>
 <li><a href="/wiki/Transcript_of_Forget-Me-Now" title="Transcript of Forget-Me-Now" season="3">Transcript of Forget-Me-Now</a></li>
 <li><a href="/wiki/Transcript_of_Notapusy" title="Transcript of Notapusy" season="3">Transcript of Notapusy</a></li>
@@ -64,6 +66,7 @@ SEASON 3
 <li><a href="/wiki/Transcript_of_Development_Arrested" title="Transcript of Development Arrested" season="3">Transcript of Development Arrested</a></li></ol>
 
 SEASON 4
+<li><a href="/wiki/Transcript_of_Flight_of_the_Phoenix" title="Transcript of Flight of the Phoenix" season="4">Transcript of Flight of the Phoenix</a></li>
 <li><a href="/wiki/Transcript_of_Borderline_Personalities" title="Transcript of Borderline Personalities" season="4">Transcript of Borderline Personalities</a></li>
 <li><a href="/wiki/Transcript_of_Indian_Takers" title="Transcript of Indian Takers" season="4">Transcript of Indian Takers</a></li>
 <li><a href="/wiki/Transcript_of_The_B._Team" title="Transcript of The B. Team" season="4">Transcript of The B. Team</a></li>
