@@ -20,66 +20,68 @@ class appearancesBarchart {
     console.log("Attempt charAppearances");
 
     this.michaelData = [
-        { 'Season': 'Season 1', 'Does Not Appear': 22, 'Appears': 0 },
-        { 'Season': 'Season 2', 'Does Not Appear': 18, 'Appears': 0 },
-        { 'Season': 'Season 3', 'Does Not Appear': 13, 'Appears': 0 },
-        { 'Season': 'Season 4', 'Does Not Appear': 15, 'Appears': 0 }
+        { season: 'Season 1', 'DoesNotAppear': 22, 'Appears': 0 },
+        { season: 'Season 2', 'DoesNotAppear': 18, 'Appears': 0 },
+        { season: 'Season 3', 'DoesNotAppear': 13, 'Appears': 0 },
+        { season: 'Season 4', 'DoesNotAppear': 15, 'Appears': 0 }
     ];
     this.lindsayData = [
-        { 'Season': 'Season 1', 'Does Not Appear': 22, 'Appears': 0 },
-        { 'Season': 'Season 2', 'Does Not Appear': 18, 'Appears': 0 },
-        { 'Season': 'Season 3', 'Does Not Appear': 13, 'Appears': 0 },
-        { 'Season': 'Season 4', 'Does Not Appear': 15, 'Appears': 0 }
+        { season: 'Season 1', 'DoesNotAppear': 22, 'Appears': 0 },
+        { season: 'Season 2', 'DoesNotAppear': 18, 'Appears': 0 },
+        { season: 'Season 3', 'DoesNotAppear': 13, 'Appears': 0 },
+        { season: 'Season 4', 'DoesNotAppear': 15, 'Appears': 0 }
     ];
     this.gobData = [
-        { 'Season': 'Season 1', 'Does Not Appear': 22, 'Appears': 0 },
-        { 'Season': 'Season 2', 'Does Not Appear': 18, 'Appears': 0 },
-        { 'Season': 'Season 3', 'Does Not Appear': 13, 'Appears': 0 },
-        { 'Season': 'Season 4', 'Does Not Appear': 15, 'Appears': 0 }
+        { season: 'Season 1', 'DoesNotAppear': 22, 'Appears': 0 },
+        { season: 'Season 2', 'DoesNotAppear': 18, 'Appears': 0 },
+        { season: 'Season 3', 'DoesNotAppear': 13, 'Appears': 0 },
+        { season: 'Season 4', 'DoesNotAppear': 15, 'Appears': 0 }
     ];
     this.georgemichaelData = [
-        { 'Season': 'Season 1', 'Does Not Appear': 22, 'Appears': 0 },
-        { 'Season': 'Season 2', 'Does Not Appear': 18, 'Appears': 0 },
-        { 'Season': 'Season 3', 'Does Not Appear': 13, 'Appears': 0 },
-        { 'Season': 'Season 4', 'Does Not Appear': 15, 'Appears': 0 }
+        { season: 'Season 1', 'DoesNotAppear': 22, 'Appears': 0 },
+        { season: 'Season 2', 'DoesNotAppear': 18, 'Appears': 0 },
+        { season: 'Season 3', 'DoesNotAppear': 13, 'Appears': 0 },
+        { season: 'Season 4', 'DoesNotAppear': 15, 'Appears': 0 }
     ];
     this.maebyData = [
-        { 'Season': 'Season 1', 'Does Not Appear': 22, 'Appears': 0 },
-        { 'Season': 'Season 2', 'Does Not Appear': 18, 'Appears': 0 },
-        { 'Season': 'Season 3', 'Does Not Appear': 13, 'Appears': 0 },
-        { 'Season': 'Season 4', 'Does Not Appear': 15, 'Appears': 0 }
+        { season: 'Season 1', 'DoesNotAppear': 22, 'Appears': 0 },
+        { season: 'Season 2', 'DoesNotAppear': 18, 'Appears': 0 },
+        { season: 'Season 3', 'DoesNotAppear': 13, 'Appears': 0 },
+        { season: 'Season 4', 'DoesNotAppear': 15, 'Appears': 0 }
     ];
     this.busterData = [
-        { 'Season': 'Season 1', 'Does Not Appear': 22, 'Appears': 0 },
-        { 'Season': 'Season 2', 'Does Not Appear': 18, 'Appears': 0 },
-        { 'Season': 'Season 3', 'Does Not Appear': 13, 'Appears': 0 },
-        { 'Season': 'Season 4', 'Does Not Appear': 15, 'Appears': 0 }
+        { season: 'Season 1', 'DoesNotAppear': 22, 'Appears': 0 },
+        { season: 'Season 2', 'DoesNotAppear': 18, 'Appears': 0 },
+        { season: 'Season 3', 'DoesNotAppear': 13, 'Appears': 0 },
+        { season: 'Season 4', 'DoesNotAppear': 15, 'Appears': 0 }
     ];
     this.tobiasData = [
-        { 'Season': 'Season 1', 'Does Not Appear': 22, 'Appears': 0 },
-        { 'Season': 'Season 2', 'Does Not Appear': 18, 'Appears': 0 },
-        { 'Season': 'Season 3', 'Does Not Appear': 13, 'Appears': 0 },
-        { 'Season': 'Season 4', 'Does Not Appear': 15, 'Appears': 0 }
+        { season: 'Season 1', 'DoesNotAppear': 22, 'Appears': 0 },
+        { season: 'Season 2', 'DoesNotAppear': 18, 'Appears': 0 },
+        { season: 'Season 3', 'DoesNotAppear': 13, 'Appears': 0 },
+        { season: 'Season 4', 'DoesNotAppear': 15, 'Appears': 0 }
     ];
     this.georgeData = [
-        { 'season': 'Season 1', 'Does Not Appear': 22, 'Appears': 0 },
-        { 'season': 'Season 2', 'Does Not Appear': 18, 'Appears': 0 },
-        { 'season': 'Season 3', 'Does Not Appear': 13, 'Appears': 0 },
-        { 'season': 'Season 4', 'Does Not Appear': 15, 'Appears': 0 }
+        { season: 'Season 1', 'DoesNotAppear': 22, 'Appears': 0 },
+        { season: 'Season 2', 'DoesNotAppear': 18, 'Appears': 0 },
+        { season: 'Season 3', 'DoesNotAppear': 13, 'Appears': 0 },
+        { season: 'Season 4', 'DoesNotAppear': 15, 'Appears': 0 }
     ];
     this.lucilleData = [
-        { 'Season': 'Season 1', 'Does Not Appear': 22, 'Appears': 0 },
-        { 'Season': 'Season 2', 'Does Not Appear': 18, 'Appears': 0 },
-        { 'Season': 'Season 3', 'Does Not Appear': 13, 'Appears': 0 },
-        { 'Season': 'Season 4', 'Does Not Appear': 15, 'Appears': 0 }
+        { season: 'Season 1', 'DoesNotAppear': 22, 'Appears': 0 },
+        { season: 'Season 2', 'DoesNotAppear': 18, 'Appears': 0 },
+        { season: 'Season 3', 'DoesNotAppear': 13, 'Appears': 0 },
+        { season: 'Season 4', 'DoesNotAppear': 15, 'Appears': 0 }
     ];
     this.narratorData = [
-        { 'Season': 'Season 1', 'Does Not Appear': 22, 'Appears': 0 },
-        { 'Season': 'Season 2', 'Does Not Appear': 18, 'Appears': 0 },
-        { 'Season': 'Season 3', 'Does Not Appear': 13, 'Appears': 0 },
-        { 'Season': 'Season 4', 'Does Not Appear': 15, 'Appears': 0 }
+        { season: 'Season 1', 'DoesNotAppear': 22, 'Appears': 0 },
+        { season: 'Season 2', 'DoesNotAppear': 18, 'Appears': 0 },
+        { season: 'Season 3', 'DoesNotAppear': 13, 'Appears': 0 },
+        { season: 'Season 4', 'DoesNotAppear': 15, 'Appears': 0 }
     ];
 
+
+    this.dataBeingUsed = this.michaelData
     this.initVis();
   }
 
@@ -89,6 +91,42 @@ class appearancesBarchart {
    */
   initVis() {
     let vis = this;
+
+    vis.legend = d3
+        .select("#legend")
+        .append("svg")
+        .attr("width", 200)
+        .attr("height", 100);
+    
+    vis.legend
+        .append("circle")
+        .attr("cx", 10)
+        .attr("cy", 10)
+        .attr("r", 5)
+        .attr("stroke", "black")
+        .attr("fill", "#643d12");
+    vis.legend
+        .append("circle")
+        .attr("cx", 10)
+        .attr("cy", 30)
+        .attr("r", 5)
+        .attr("stroke", "black")
+        .attr("fill", "#fcae54");
+
+    vis.legend
+        .append("text")
+        .attr("x", 20)
+        .attr("y", 10)
+        .text("Appears")
+        .style("font-size", "15px")
+        .attr("alignment-baseline", "middle");
+    vis.legend
+        .append("text")
+        .attr("x", 20)
+        .attr("y", 30)
+        .text("Does Not Appear")
+        .style("font-size", "15px")
+        .attr("alignment-baseline", "middle");
 
     let michaelLastAddedEp = "";
     let lindsayLastAddedEp = "";
@@ -107,84 +145,76 @@ class appearancesBarchart {
         switch (vis.data[i].character) {
             case "Michael":
                 if (michaelLastAddedEp != currentEp){
-                    vis.michaelData[season]['Does Not Appear'] -= 1;
+                    vis.michaelData[season]['DoesNotAppear'] -= 1;
                     vis.michaelData[season]['Appears'] += 1;
                     michaelLastAddedEp = currentEp
                 }
                 break;
             case "Lindsay":
                 if (lindsayLastAddedEp != currentEp){
-                    vis.lindsayData[season]['Does Not Appear'] -= 1;
+                    vis.lindsayData[season]['DoesNotAppear'] -= 1;
                     vis.lindsayData[season]['Appears'] += 1;
                     lindsayLastAddedEp = currentEp
                 }
                 break;
             case "G.O.B.":
                 if (gobLastAddedEp != currentEp){
-                    vis.gobData[season]['Does Not Appear'] -= 1;
+                    vis.gobData[season]['DoesNotAppear'] -= 1;
                     vis.gobData[season]['Appears'] += 1;
                     gobLastAddedEp = currentEp
                 }
                 break;
             case "George Michael":
                 if (georgemichaelLastAddedEp != currentEp){
-                    vis.georgemichaelData[season]['Does Not Appear'] -= 1;
+                    vis.georgemichaelData[season]['DoesNotAppear'] -= 1;
                     vis.georgemichaelData[season]['Appears'] += 1;
                     georgemichaelLastAddedEp = currentEp
                 }
                 break;
             case "Maeby":
                 if (maebyLastAddedEp != currentEp){
-                    vis.maebyData[season]['Does Not Appear'] -= 1;
+                    vis.maebyData[season]['DoesNotAppear'] -= 1;
                     vis.maebyData[season]['Appears'] += 1;
                     maebyLastAddedEp = currentEp
                 }
                 break;
             case "Buster":
                 if (busterLastAddedEp != currentEp){
-                    vis.busterData[season]['Does Not Appear'] -= 1;
+                    vis.busterData[season]['DoesNotAppear'] -= 1;
                     vis.busterData[season]['Appears'] += 1;
                     busterLastAddedEp = currentEp
                 }
                 break;
             case "Tobias":
                 if (tobiasLastAddedEp != currentEp){
-                    vis.tobiasData[season]['Does Not Appear'] -= 1;
+                    vis.tobiasData[season]['DoesNotAppear'] -= 1;
                     vis.tobiasData[season]['Appears'] += 1;
                     tobiasLastAddedEp = currentEp
                 }
                 break;
             case "George, Sr.":
                 if (georgeLastAddedEp != currentEp){
-                    vis.georgeData[season]['Does Not Appear'] -= 1;
+                    vis.georgeData[season]['DoesNotAppear'] -= 1;
                     vis.georgeData[season]['Appears'] += 1;
                     georgeLastAddedEp = currentEp
                 }
                 break;
             case "Lucille":
                 if (lucilleLastAddedEp != currentEp){
-                    vis.lucilleData[season]['Does Not Appear'] -= 1;
+                    vis.lucilleData[season]['DoesNotAppear'] -= 1;
                     vis.lucilleData[season]['Appears'] += 1;
                     lucilleLastAddedEp = currentEp
                 }
                 break;
             case "Narrator":
                 if (narratorLastAddedEp != currentEp){
-                    vis.narratorData[season]['Does Not Appear'] -= 1;
+                    vis.narratorData[season]['DoesNotAppear'] -= 1;
                     vis.narratorData[season]['Appears'] += 1;
                     narratorLastAddedEp = currentEp
                 }
                 break;
         }
     }
-
-    console.log(vis.lindsayData)
-    console.log(vis.georgemichaelData)
-    console.log(vis.georgeData)
-    console.log(vis.lucilleData)
-    console.log(vis.gobData)
-
-    var colors = ["#fcae54", "#643d12"];
 
     vis.width = vis.config.containerWidth - vis.config.margin.left - vis.config.margin.right;
     vis.height = vis.config.containerHeight - vis.config.margin.top - vis.config.margin.bottom;
@@ -220,9 +250,19 @@ class appearancesBarchart {
         .attr('class', 'axis y-axis');
 
     vis.stack = d3.stack()
-        .keys(['Does Not Appear', 'Appears']);
+        .keys(['DoesNotAppear', 'Appears']);
 
-    vis.updateVis();
+
+    var allGroup = ["Michael", "Lindsay", "G.O.B.", "George Michael", "Maeby", "Buster", "Tobias", "George", "Lucille", "Narrator"]
+    // add the options to the button
+    d3.select("#selectButton")
+      .selectAll('myOptions')
+     	.data(allGroup)
+      .enter()
+    	.append('option')
+      .text(function (d) { return d; }) // text showed in the menu
+      .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
   }
 
   /**
@@ -231,13 +271,44 @@ class appearancesBarchart {
   updateVis() {
     let vis = this;
 
+    switch (vis.config.character) {
+        case "Michael":
+            vis.dataBeingUsed = vis.michaelData
+            break;
+        case "Lindsay":
+            vis.dataBeingUsed = vis.lindsayData
+            break;
+        case "G.O.B.":
+            vis.dataBeingUsed = vis.gobData
+            break;
+        case "George Michael":
+            vis.dataBeingUsed = vis.georgemichaelData
+            break;
+        case "Maeby":
+            vis.dataBeingUsed = vis.maebyData
+            break;
+        case "Buster":
+            vis.dataBeingUsed = vis.busterData
+            break;
+        case "Tobias":
+            vis.dataBeingUsed = vis.tobiasData
+            break;
+        case "George":
+            vis.dataBeingUsed = vis.georgeData
+            break;
+        case "Lucille":
+            vis.dataBeingUsed = vis.lucilleData
+            break;
+        case "Narrator":
+            vis.dataBeingUsed = vis.narratorData
+            break;
+    }
+
     // Set the scale input domains
     vis.xScale.domain(['Season 1','Season 2','Season 3','Season 4']);
     vis.yScale.domain([0, 22]);
 
-    vis.stackedData = vis.stack(vis.georgeData)
-
-    console.log(vis.stackedData)
+    vis.stackedData = vis.stack(vis.dataBeingUsed)
 
     vis.renderVis();
   }
@@ -255,10 +326,12 @@ class appearancesBarchart {
       .selectAll('rect')
         .data(d => d)
       .join('rect')
-        .attr('x', d => vis.xScale(d.data.year))
+        .attr('x', d => vis.xScale(d.data.season))
         .attr('y', d => vis.yScale(d[1]))
         .attr('height', d => vis.yScale(d[0]) - vis.yScale(d[1]))
         .attr('width', vis.xScale.bandwidth());
+    
+    
 
     // Update the axes
     vis.xAxisG.call(vis.xAxis);

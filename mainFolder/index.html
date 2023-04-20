@@ -7,10 +7,18 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Add HTML content, SVG drawing area, ... -->
-    <svg id="LinePerEp"></svg>
-    <svg id="appearancesBarchart"></svg>
-    <div id ="tooltip-bar"></div>
+
+    <div id="timeline-container" style="margin-bottom: 50px">
+        <svg id="LinePerEp"></svg>
+        <div id ="tooltip-bar"></div>
+    </div>
+
+    <div id="middle-container">
+        <div id="legend" style="margin-bottom: -75px"></div>
+        <!-- Initialize a select button -->
+        <select id="selectButton"></select>
+        <svg id="appearancesBarchart"></svg>
+    <div>
 
     <!-- D3 bundle -->
     <script src="js/d3.v6.min.js"></script>

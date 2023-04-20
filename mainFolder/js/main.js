@@ -10,8 +10,19 @@ d3.csv("data/export_dataframe.csv").then((_data) => {
     linePerEP.updateVis();
 
     charAppearances = new appearancesBarchart({ parentElement: "#appearancesBarchart" }, data);
-    charAppearances.updateVis();
 });
+
+
+d3.select("#selectButton").on("change", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value")
+
+    console.log(selectedOption)
+    // update config
+    charAppearances.config.character = selectedOption
+    
+    charAppearances.updateVis()
+})
 
 function checkSeason(ep) {
     if (

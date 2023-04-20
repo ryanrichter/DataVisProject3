@@ -26,9 +26,18 @@
     shape-rendering: crispEdges;
   }
   
-  .cat-doesnotappear rect {
-    fill: #6080b5;
+  .cat-DoesNotAppear rect {
+    fill: #643d12;
   }
-  .cat-appears rect {
-    fill: #d4c32d;
+  .cat-Appears rect {
+    fill: #fcae54;
+  }
+
+  .timeline-container {
+    width: 700px;
+    margin-bottom: 20px;
+  }
+  .graph-container {
+    width: 420px;
+    margin-bottom: 20px;
   }
