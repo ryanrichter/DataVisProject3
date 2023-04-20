@@ -8,10 +8,12 @@ d3.csv("data/export_dataframe.csv").then((_data) => {
     // Create an instance (for example in main.js)
     linePerEP = new LinesPerEp({ parentElement: "#LinePerEp" }, data);
     linePerEP.updateVis();
+
+    charAppearances = new appearancesBarchart({ parentElement: "#appearancesBarchart" }, data);
+    charAppearances.updateVis();
 });
 
 function checkSeason(ep) {
-    console.log(ep);
     if (
         ep == "Pilot" ||
         ep == "Top Banana" ||
