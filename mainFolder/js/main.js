@@ -9,6 +9,9 @@ d3.csv("data/export_dataframe.csv").then((_data) => {
     linePerEP = new LinesPerEp({ parentElement: "#LinePerEp" }, data);
     linePerEP.updateVis();
 
+    linesPerChar = new CharLines({ parentElement: "#CharLinesChart" }, data);
+    linesPerChar.updateVis();
+
     charAppearances = new appearancesBarchart({ parentElement: "#appearancesBarchart" }, data);
 });
 
@@ -108,4 +111,13 @@ function checkSeason(ep) {
     } else {
         return 0;
     }
+}
+
+function sortFrequency(a, b) {
+	if (a[1] === b[1]) {
+			return 0;
+	}
+	else {
+			return (a[1] < b[1]) ? 1 : -1;
+	}
 }
