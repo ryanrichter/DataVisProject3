@@ -1,5 +1,7 @@
 console.log("Hello World");
 
+let showFilter = [];
+
 d3.csv("data/export_dataframe.csv").then((_data) => {
     data = _data;
     console.log("Data loading complete. Work with dataset.");
@@ -35,11 +37,23 @@ d3.select("#selectSeaButton").on("change", function (d) {
     // recover the option that has been chosen
     var selectedOption = d3.select(this).property("value");
 
-    console.log(selectedOption);
+    console.log(selectedOption, d);
     // update config
-    seaEpDropdown.config.season = selectedOption;
+    if (selectedOption != "") {
+        selectedSeason = selectedOption.charAt(7);
+    }
+
+    seaEpDropdown.config.season = +selectedSeason;
 
     // run filter function
+    // const isActive = showFilter.includes(selectedOption);
+    if (selectedSeason == "") {
+        showFilter = showFilter.filter((f) => f !== selectedSeason);
+    } else {
+        showFilter = [selectedSeason];
+    }
+    console.log(showFilter);
+    filterData();
 });
 
 function checkSeason(ep) {
@@ -134,4 +148,13 @@ function sortFrequency(a, b) {
     } else {
         return a[1] < b[1] ? 1 : -1;
     }
+}
+
+function filterData() {
+    if (showFilter.length == 0) {
+        linesPerChar.data = data;
+    } else {
+        linesPerChar.data = data.filter((d) => showFilter.includes(d.season));
+    }
+    linesPerChar.updateVis();
 }
