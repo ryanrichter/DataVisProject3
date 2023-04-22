@@ -117,14 +117,14 @@ class appearancesBarchart {
         .append("text")
         .attr("x", 20)
         .attr("y", 10)
-        .text("Appears")
+        .text("Does Not Appear")
         .style("font-size", "15px")
         .attr("alignment-baseline", "middle");
     vis.legend
         .append("text")
         .attr("x", 20)
         .attr("y", 30)
-        .text("Does Not Appear")
+        .text("Appear")
         .style("font-size", "15px")
         .attr("alignment-baseline", "middle");
 
@@ -253,7 +253,7 @@ class appearancesBarchart {
         .keys(['DoesNotAppear', 'Appears']);
 
 
-    var allGroup = ["Michael", "Lindsay", "G.O.B.", "George Michael", "Maeby", "Buster", "Tobias", "George", "Lucille", "Narrator"]
+    var allGroup = ["<None>", "Michael", "Lindsay", "G.O.B.", "George Michael", "Maeby", "Buster", "Tobias", "George", "Lucille", "Narrator"]
     // add the options to the button
     d3.select("#selectButton")
       .selectAll('myOptions')
