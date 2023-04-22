@@ -12,20 +12,35 @@ d3.csv("data/export_dataframe.csv").then((_data) => {
     linesPerChar = new CharLines({ parentElement: "#CharLinesChart" }, data);
     linesPerChar.updateVis();
 
-    charAppearances = new appearancesBarchart({ parentElement: "#appearancesBarchart" }, data);
+    charAppearances = new appearancesBarchart(
+        { parentElement: "#appearancesBarchart" },
+        data
+    );
+
+    seaEpDropdown = new SeaEpDrop({ parentElement: "#dropdownRow" }, data);
 });
 
-
-d3.select("#selectButton").on("change", function(d) {
+d3.select("#selectCharButton").on("change", function (d) {
     // recover the option that has been chosen
-    var selectedOption = d3.select(this).property("value")
+    var selectedOption = d3.select(this).property("value");
 
-    console.log(selectedOption)
+    console.log(selectedOption);
     // update config
-    charAppearances.config.character = selectedOption
-    
-    charAppearances.updateVis()
-})
+    charAppearances.config.character = selectedOption;
+
+    charAppearances.updateVis();
+});
+
+d3.select("#selectSeaButton").on("change", function (d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value");
+
+    console.log(selectedOption);
+    // update config
+    seaEpDropdown.config.season = selectedOption;
+
+    // run filter function
+});
 
 function checkSeason(ep) {
     if (
@@ -114,10 +129,9 @@ function checkSeason(ep) {
 }
 
 function sortFrequency(a, b) {
-	if (a[1] === b[1]) {
-			return 0;
-	}
-	else {
-			return (a[1] < b[1]) ? 1 : -1;
-	}
+    if (a[1] === b[1]) {
+        return 0;
+    } else {
+        return a[1] < b[1] ? 1 : -1;
+    }
 }
