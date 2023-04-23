@@ -21,6 +21,8 @@ class SeaEpDrop {
         };
         this.data = _data;
 
+        this.dropdown = d3.select("#selectEpButton");
+
         this.initvis();
     }
 
@@ -146,21 +148,30 @@ class SeaEpDrop {
                 episodes = [];
         }
 
-        console.log(episodes);
+        console.log(episodes, "vis.dropdown", vis.dropdown);
 
-        d3.select("#selectEpButton").selectAll("myOptions").remove();
+        if (vis.dropdown != undefined) {
+            console.log(vis.dropdown, episodes);
 
-        // add the options to the button
-        d3.select("#selectEpButton")
-            .selectAll("myOptions")
-            .data(episodes)
-            .enter()
-            .append("option")
-            .text(function (d) {
-                return d;
-            }) // text showed in the menu
-            .attr("value", function (d) {
-                return d;
-            }); // corresponding value returned by the button
+            vis.dropdown.selectAll("option").remove();
+
+            console.log(vis.dropdown);
+
+            vis.dropdown
+                .selectAll("myOptions")
+                .data(episodes)
+                .enter()
+                .append("option")
+                .text(function (d) {
+                    return d;
+                }) // text showed in the menu
+                .attr("value", function (d) {
+                    return d;
+                }); // corresponding value returned by the button
+        } else {
+            console.log("else");
+
+            // add the options to the button
+        }
     }
 }

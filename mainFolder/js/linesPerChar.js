@@ -4,6 +4,7 @@ class CharLines {
             parentElement: _config.parentElement,
             containerWidth: _config.containerWidth || 500,
             containerHeight: _config.containerHeight || 350,
+            tooltipPadding: _config.tooltipPadding || 15,
             margin: { top: 40, right: 50, bottom: 120, left: 50 },
         };
 
@@ -30,7 +31,7 @@ class CharLines {
         // Initialize scales and axes
 
         // Initialize scales
-        vis.colorScale = d3.scaleOrdinal().range(["#b56203"]); // TBD Color
+        vis.colorScale = d3.scaleOrdinal().range(["#fb8604"]); // TBD Color
 
         // Important: we flip array elements in the y output range to position the rectangles correctly
         vis.yScale = d3.scaleLinear().range([vis.height, 0]);
@@ -144,6 +145,31 @@ class CharLines {
             .attr("height", (d) => vis.height - vis.yScale(vis.yValue(d)))
             .attr("y", (d) => vis.yScale(vis.yValue(d)))
             .attr("fill", (d) => vis.colorScale(vis.colorValue(d)));
+
+        // Tooltip event listeners
+        bars.on("mouseover", (event, d) => {
+            d3.select("#tooltip-perChar")
+                .style("opacity", 1)
+                // Format number with million and thousand separator
+                .html(
+                    `<div class="tooltip-title">${d.key}</div>
+                <div>${d.count} lines of dialogue</div>`
+                );
+        })
+            .on("mousemove", (event) => {
+                d3.select("#tooltip-perChar")
+                    .style(
+                        "left",
+                        event.pageX + vis.config.tooltipPadding + "px"
+                    )
+                    .style(
+                        "top",
+                        event.pageY + vis.config.tooltipPadding + "px"
+                    );
+            })
+            .on("mouseleave", () => {
+                d3.select("#tooltip-perChar").style("opacity", 0);
+            });
 
         vis.xAxisG
             .call(vis.xAxis)

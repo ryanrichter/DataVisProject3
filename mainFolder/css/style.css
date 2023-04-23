@@ -1,4 +1,5 @@
-#tooltip-bar {
+#tooltip-bar,
+#tooltip-perChar {
     position: absolute;
     opacity: 0;
     background: #fff;
