@@ -278,7 +278,7 @@ class appearancesBarchart {
             "Narrator",
         ];
         // add the options to the button
-        d3.select("#selectButton")
+        d3.select("#selectCharButton")
             .selectAll("myOptions")
             .data(allGroup)
             .enter()
