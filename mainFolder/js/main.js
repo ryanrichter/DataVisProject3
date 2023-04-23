@@ -1,31 +1,74 @@
 console.log("Hello World");
 
+let showFilter = [];
+let selectedSeason = "0";
+
 d3.csv("data/export_dataframe.csv").then((_data) => {
     data = _data;
     console.log("Data loading complete. Work with dataset.");
     console.log(data);
 
     // Create an instance (for example in main.js)
-    linePerEP = new LinesPerEp({ parentElement: "#LinePerEp" }, data);
-    linePerEP.updateVis();
+    linesPerEp = new LinesPerEp({ parentElement: "#LinePerEp" }, data);
+    linesPerEp.updateVis();
 
     linesPerChar = new CharLines({ parentElement: "#CharLinesChart" }, data);
     linesPerChar.updateVis();
 
-    charAppearances = new appearancesBarchart({ parentElement: "#appearancesBarchart" }, data);
+    charAppearances = new appearancesBarchart(
+        { parentElement: "#appearancesBarchart" },
+        data
+    );
+
+    seaEpDropdown = new SeaEpDrop({ parentElement: "#dropdownRow" }, data);
 });
 
-
-d3.select("#selectButton").on("change", function(d) {
+d3.select("#selectCharButton").on("change", function (d) {
     // recover the option that has been chosen
-    var selectedOption = d3.select(this).property("value")
+    var selectedOption = d3.select(this).property("value");
 
-    console.log(selectedOption)
+    console.log(selectedOption);
     // update config
-    charAppearances.config.character = selectedOption
-    
-    charAppearances.updateVis()
-})
+    charAppearances.config.character = selectedOption;
+
+    charAppearances.updateVis();
+});
+
+d3.select("#selectSeaButton").on("change", function (d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value");
+
+    console.log(selectedOption, d);
+    // update config
+    if (selectedOption != "") {
+        selectedSeason = selectedOption.charAt(7);
+        showFilter = [selectedSeason];
+        console.log(selectedSeason, showFilter);
+        selectedSeason = +selectedSeason;
+    } else {
+        showFilter = []; // Remove filter
+    }
+    filterData(0);
+    seaEpDropdown.updateVis(selectedOption);
+});
+
+d3.select("#selectEpButton").on("change", function (d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value");
+
+    console.log(selectedOption, selectedSeason);
+
+    if (selectedSeason == checkSeason(selectedOption)) {
+        showFilter = [selectedOption];
+        filterData(1);
+    } else if (selectedOption == "" && showFilter != []) {
+        showFilter = ["" + selectedSeason];
+        console.log(showFilter);
+        filterData(0);
+    } else {
+        console.log("Season and Episode Mismatch");
+    }
+});
 
 function checkSeason(ep) {
     if (
@@ -114,10 +157,30 @@ function checkSeason(ep) {
 }
 
 function sortFrequency(a, b) {
-	if (a[1] === b[1]) {
-			return 0;
-	}
-	else {
-			return (a[1] < b[1]) ? 1 : -1;
-	}
+    if (a[1] === b[1]) {
+        return 0;
+    } else {
+        return a[1] < b[1] ? 1 : -1;
+    }
+}
+
+function filterData(i) {
+    if (showFilter.length == 0) {
+        linesPerChar.data = data;
+        // linesPerEp.data = data;
+    } else {
+        if (i == 0) {
+            linesPerChar.data = data.filter((d) =>
+                showFilter.includes(d.season)
+            );
+            // linesPerEp.data = data.filter((d) => showFilter.includes(d.season));
+        } else {
+            linesPerChar.data = data.filter((d) =>
+                showFilter.includes(d.episode)
+            );
+            // linesPerEp.data = data.filter((d) => showFilter.includes(d.episode));
+        }
+    }
+    linesPerChar.updateVis();
+    // linesPerEp.updateVis();
 }

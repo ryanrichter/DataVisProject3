@@ -227,58 +227,8 @@ class LinesPerEp {
                 d3.select("#tooltip-bar").style("opacity", 0);
             });
 
-        // Add rectangles
-        // const barsBot = vis.chartBot
-        //     .selectAll(".bar")
-        //     .data(vis.aggregatedData, vis.xValue)
-        //     .join("rect")
-        //     .attr("class", "bar")
-        //     .attr("x", (d) => vis.xScaleBot(vis.xValue(d)))
-        //     .attr("width", vis.xScaleBot.bandwidth())
-        //     .attr(
-        //         "height",
-        //         (d) => vis.config.botHeight - vis.yScaleBot(vis.yValue(d))
-        //     )
-        //     .attr("y", (d) => vis.yScaleBot(vis.yValue(d)))
-        //     .attr("fill", (d) => vis.colorScale(vis.colorValue(d)));
-
         // Update axes
         vis.xAxisTopG.call(vis.xAxisTop);
         vis.yAxisTopG.call(vis.yAxisTop);
-        // vis.xAxisBotG.call(vis.xAxisBot);
-        // vis.yAxisBotG.call(vis.yAxisBot); // not needed?
-
-        // Update the brush and define a default position
-        //     const defaultBrushSelection = [
-        //         vis.xScaleTop(new Date("2022-10-20")),
-        //         vis.xScaleBot.range()[1],
-        //     ];
-        //     vis.brushG.call(vis.brush).call(vis.brush.move, defaultBrushSelection);
-        // }
-
-        // /**
-        //  * React to brush events
-        //  */
-        // brushed(selection) {
-        //     let vis = this;
-
-        //     // Check if the brush is still active or if it has been removed
-        //     if (selection) {
-        //         // Convert given pixel coordinates (range: [x0,x1]) into a time period (domain: [Date, Date])
-        //         const selectedDomain = selection.map(
-        //             vis.xScaleBot.invert,
-        //             vis.xScaleBot
-        //         );
-
-        //         // Update x-scale of the focus view accordingly
-        //         vis.xScaleTop.domain(selectedDomain);
-        //     } else {
-        //         // Reset x-scale of the focus view (full time period)
-        //         vis.xScaleTop.domain(vis.xScaleBot.domain());
-        //     }
-
-        //     // Redraw line and update x-axis labels in focus view
-        //     // vis.topLinePath.attr("d", vis.line);
-        //     vis.xAxisTopG.call(vis.xAxisTop);
     }
 }
