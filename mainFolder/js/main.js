@@ -1,6 +1,7 @@
 console.log("Hello World");
 
 let showFilter = [];
+let selectedSeason = "0";
 
 d3.csv("data/export_dataframe.csv").then((_data) => {
     data = _data;
@@ -8,8 +9,8 @@ d3.csv("data/export_dataframe.csv").then((_data) => {
     console.log(data);
 
     // Create an instance (for example in main.js)
-    linePerEP = new LinesPerEp({ parentElement: "#LinePerEp" }, data);
-    linePerEP.updateVis();
+    linesPerEp = new LinesPerEp({ parentElement: "#LinePerEp" }, data);
+    linesPerEp.updateVis();
 
     linesPerChar = new CharLines({ parentElement: "#CharLinesChart" }, data);
     linesPerChar.updateVis();
@@ -41,19 +42,32 @@ d3.select("#selectSeaButton").on("change", function (d) {
     // update config
     if (selectedOption != "") {
         selectedSeason = selectedOption.charAt(7);
-    }
-
-    seaEpDropdown.config.season = +selectedSeason;
-
-    // run filter function
-    // const isActive = showFilter.includes(selectedOption);
-    if (selectedSeason == "") {
-        showFilter = showFilter.filter((f) => f !== selectedSeason);
-    } else {
         showFilter = [selectedSeason];
+        console.log(selectedSeason, showFilter);
+        selectedSeason = +selectedSeason;
+    } else {
+        showFilter = []; // Remove filter
     }
-    console.log(showFilter);
-    filterData();
+    filterData(0);
+    seaEpDropdown.updateVis(selectedOption);
+});
+
+d3.select("#selectEpButton").on("change", function (d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value");
+
+    console.log(selectedOption, selectedSeason);
+
+    if (selectedSeason == checkSeason(selectedOption)) {
+        showFilter = [selectedOption];
+        filterData(1);
+    } else if (selectedOption == "" && showFilter != []) {
+        showFilter = ["" + selectedSeason];
+        console.log(showFilter);
+        filterData(0);
+    } else {
+        console.log("Season and Episode Mismatch");
+    }
 });
 
 function checkSeason(ep) {
@@ -150,11 +164,23 @@ function sortFrequency(a, b) {
     }
 }
 
-function filterData() {
+function filterData(i) {
     if (showFilter.length == 0) {
         linesPerChar.data = data;
+        // linesPerEp.data = data;
     } else {
-        linesPerChar.data = data.filter((d) => showFilter.includes(d.season));
+        if (i == 0) {
+            linesPerChar.data = data.filter((d) =>
+                showFilter.includes(d.season)
+            );
+            // linesPerEp.data = data.filter((d) => showFilter.includes(d.season));
+        } else {
+            linesPerChar.data = data.filter((d) =>
+                showFilter.includes(d.episode)
+            );
+            // linesPerEp.data = data.filter((d) => showFilter.includes(d.episode));
+        }
     }
     linesPerChar.updateVis();
+    // linesPerEp.updateVis();
 }

@@ -30,7 +30,7 @@ class CharLines {
         // Initialize scales and axes
 
         // Initialize scales
-        vis.colorScale = d3.scaleOrdinal().range(["#fb8604"]); // TBD Color
+        vis.colorScale = d3.scaleOrdinal().range(["#b56203"]); // TBD Color
 
         // Important: we flip array elements in the y output range to position the rectangles correctly
         vis.yScale = d3.scaleLinear().range([vis.height, 0]);
@@ -93,7 +93,11 @@ class CharLines {
 
         vis.newData = [];
         let j = 0;
-        for (let i = 0; vis.newData.length < 10; i++) {
+        for (
+            let i = 0;
+            vis.newData.length < 10 && i < vis.aggregatedData.length;
+            i++
+        ) {
             if (
                 vis.aggregatedData[i].key == "Michael" ||
                 vis.aggregatedData[i].key == "Narrator" ||
@@ -140,16 +144,6 @@ class CharLines {
             .attr("height", (d) => vis.height - vis.yScale(vis.yValue(d)))
             .attr("y", (d) => vis.yScale(vis.yValue(d)))
             .attr("fill", (d) => vis.colorScale(vis.colorValue(d)));
-        // .on('click', function(event, d) {
-        //     const isActive = discoveryBarFilter.includes(d.key);
-        //     if (isActive) {
-        //       discoveryBarFilter = discoveryBarFilter.filter(f => f !== d.key); // Remove filter
-        //     } else {
-        //       discoveryBarFilter.push(d.key); // Append filter
-        //     }
-        //     filterData(discoveryBarFilter, 3); // Call global function to update scatter plot
-        //     d3.select(this).classed('active', !isActive); // Add class to style active filters with CSS
-        //   });
 
         vis.xAxisG
             .call(vis.xAxis)
