@@ -26,21 +26,27 @@
             <button class="narrator button" onclick=" window.open('https://arresteddevelopment.fandom.com/wiki/Narrator')"> <img src= "/mainFolder/headshots/narrator.PNG" height = "100" width = "100"/>The Narrator</button>
         </div>
 
+    <div id="#dropdownRow">
+        <select id="selectSeaButton"></select>
+        <select id="selectEpButton"></select>
+    </div>
+
         <div id="timeline-container" style="margin-bottom: 50px">
             <svg id="LinePerEp"></svg>
             <div id ="tooltip-bar"></div>
         </div>
 
-        <div id="middle-container">
-            <div id="legend" style="margin-bottom: -75px"></div>
-            <!-- Initialize a select button -->
-            <select id="selectButton"></select>
-            <svg id="appearancesBarchart"></svg>
-        <div>
+    <div id="middle-container">
+        <div id="legend" style="margin-bottom: -75px"></div>
+        <!-- Initialize a select button -->
+        <select id="selectCharButton"></select>
+        <svg id="appearancesBarchart"></svg>
     </div>
 
-
-    <svg id="CharLinesChart"></svg>
+    <div class="perChar container">
+        <svg id="CharLinesChart"></svg>
+        <div id ="tooltip-perChar"></div>
+    </div>
 
     <!-- D3 bundle -->
     <script src="js/d3.v6.min.js"></script>
@@ -50,5 +56,6 @@
     <script src="js/linesPerEp.js"></script>
     <script src="js/characterAppearances.js"></script>
     <script src="js/linesPerChar.js"></script>
+    <script src="js/dropdowns.js"></script>
 </body>
 </html>
