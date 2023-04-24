@@ -5,9 +5,7 @@ class LinesPerEp {
             containerWidth: _config.containerWidth || 1430,
             containerHeight: _config.containerHeight || 260,
             tooltipPadding: _config.tooltipPadding || 15,
-            botHeight: 80,
             margin: { top: 40, right: 10, bottom: 10, left: 50 },
-            botMargin: { top: 260, right: 50, bottom: 10, left: 50 },
         };
 
         this.data = _data;
@@ -20,7 +18,7 @@ class LinesPerEp {
     initVis() {
         let vis = this;
 
-        // Calculate inner chartTop size. Margin specifies the space around the actual chartTop.
+        // Calculate inner chart size. Margin specifies the space around the actual chart.
         vis.width =
             vis.config.containerWidth -
             vis.config.margin.left -
@@ -38,30 +36,13 @@ class LinesPerEp {
             .range(["#fcae54", "#fb8604", "#b56203", "#643d12"]); // TBD Color
 
         // Important: we flip array elements in the y output range to position the rectangles correctly
-        vis.yScaleTop = d3.scaleLinear().range([vis.height, 0]);
+        vis.yScale = d3.scaleLinear().range([vis.height, 0]);
 
-        vis.yScaleBot = d3
-            .scaleLinear()
-            .range([vis.config.botHeight, 0])
-            .nice();
+        vis.xScale = d3.scaleBand().range([0, vis.width]).paddingInner(0.2);
 
-        vis.xScaleTop = d3.scaleBand().range([0, vis.width]).paddingInner(0.2);
+        vis.xAxis = d3.axisBottom(vis.xScale).tickValues([]).tickSizeOuter(0);
 
-        vis.xScaleBot = d3.scaleBand().range([0, vis.width]).paddingInner(0.2);
-
-        vis.xAxisTop = d3
-            .axisBottom(vis.xScaleTop)
-            .tickValues([])
-            .tickSizeOuter(0);
-
-        vis.yAxisTop = d3.axisLeft(vis.yScaleTop).tickSizeOuter(0);
-
-        vis.xAxisBot = d3
-            .axisBottom(vis.xScaleBot)
-            .tickValues([])
-            .tickSizeOuter(0);
-
-        vis.yAxisBot = d3.axisLeft(vis.yScaleBot).tickSizeOuter(0);
+        vis.yAxis = d3.axisLeft(vis.yScale).tickSizeOuter(0);
 
         // Define size of SVG drawing area
         vis.svg = d3
@@ -69,64 +50,31 @@ class LinesPerEp {
             .attr("width", vis.config.containerWidth)
             .attr("height", vis.config.containerHeight);
 
-        // SVG Group containing the actual chartTop; D3 margin convention
-        vis.chartTop = vis.svg
+        // SVG Group containing the actual chart; D3 margin convention
+        vis.chart = vis.svg
             .append("g")
             .attr(
                 "transform",
                 `translate(${vis.config.margin.left},${vis.config.margin.top})`
             );
 
-        // Append empty x-axis group and move it to the bottom of the chartTop
-        vis.xAxisTopG = vis.chartTop
+        // Append empty x-axis group and move it to the bottom of the chart
+        vis.xAxisG = vis.chart
             .append("g")
             .attr("class", "axis x-axis")
             .attr("transform", `translate(0,${vis.height})`);
 
         // Append y-axis group
-        vis.yAxisTopG = vis.chartTop.append("g").attr("class", "axis y-axis");
+        vis.yAxisG = vis.chart.append("g").attr("class", "axis y-axis");
 
         // Append axis title
-        vis.chartTop
+        vis.svg
             .append("text")
-            .attr("class", "chartTop-title")
+            .attr("class", "chart-title")
             .attr("x", 10)
-            .attr("y", -25)
+            .attr("y", 15)
             .attr("dy", ".71em")
             .text("Number of Lines Per Episode");
-
-        // Append context group with x- and y-axes
-        vis.chartBot = vis.svg
-            .append("g")
-            .attr(
-                "transform",
-                `translate(${vis.config.botMargin.left},${vis.config.botMargin.top})`
-            );
-
-        // Append empty x-axis group and move it to the bottom of the chartBot
-        vis.xAxisBotG = vis.chartBot
-            .append("g")
-            .attr("class", "axis x-axis")
-            .attr("transform", `translate(0,${vis.config.botHeight})`);
-
-        // Append y-axis group
-        vis.yAxisBotG = vis.chartBot.append("g").attr("class", "axis y-axis");
-
-        vis.brushG = vis.chartBot.append("g").attr("class", "brush x-brush");
-
-        // Initialize brush component
-        vis.brush = d3
-            .brushX()
-            .extent([
-                [0, 0],
-                [vis.config.width, vis.config.botHeight],
-            ])
-            .on("brush", function ({ selection }) {
-                if (selection) vis.brushed(selection);
-            })
-            .on("end", function ({ selection }) {
-                if (!selection) vis.brushed(null);
-            });
     }
 
     updateVis() {
@@ -168,7 +116,7 @@ class LinesPerEp {
             }
         }
 
-        console.log(vis.aggregatedData);
+        console.log("lines Per Ep", vis.aggregatedData);
 
         // Specificy accessor functions
         vis.colorValue = (d) => d.color;
@@ -176,12 +124,10 @@ class LinesPerEp {
         vis.yValue = (d) => d.count;
 
         // Set the scale input domains
-        vis.xScaleTop.domain(vis.aggregatedData.map(vis.xValue));
-        vis.yScaleTop.domain([0, d3.max(vis.aggregatedData, vis.yValue)]);
-        vis.xScaleBot.domain(vis.aggregatedData.map(vis.xValue));
-        vis.yScaleBot.domain([0, d3.max(vis.aggregatedData, vis.yValue)]);
+        vis.xScale.domain(vis.aggregatedData.map(vis.xValue));
+        vis.yScale.domain([0, d3.max(vis.aggregatedData, vis.yValue)]);
 
-        console.log("Scale Domains", vis.yScaleTop, vis.yScaleBot);
+        console.log("Scale Domains", vis.yScale);
 
         vis.renderVis();
     }
@@ -190,28 +136,27 @@ class LinesPerEp {
         let vis = this;
 
         // Add rectangles
-        const barsTop = vis.chartTop
+        const bars = vis.chart
             .selectAll(".bar")
             .data(vis.aggregatedData, vis.xValue)
             .join("rect")
-            .attr("class", "time-bar")
-            .attr("x", (d) => vis.xScaleTop(vis.xValue(d)))
-            .attr("width", vis.xScaleTop.bandwidth())
-            .attr("height", (d) => vis.height - vis.yScaleTop(vis.yValue(d)))
-            .attr("y", (d) => vis.yScaleTop(vis.yValue(d)))
+            .attr("class", "bar")
+            .attr("x", (d) => vis.xScale(vis.xValue(d)))
+            .attr("width", vis.xScale.bandwidth())
+            .attr("height", (d) => vis.height - vis.yScale(vis.yValue(d)))
+            .attr("y", (d) => vis.yScale(vis.yValue(d)))
             .attr("fill", (d) => d.color);
 
         // Tooltip event listeners
-        barsTop
-            .on("mouseover", (event, d) => {
-                d3.select("#tooltip-bar")
-                    .style("opacity", 1)
-                    // Format number with million and thousand separator
-                    .html(
-                        `<div class="tooltip-title">${d.key}</div>
+        bars.on("mouseover", (event, d) => {
+            d3.select("#tooltip-bar")
+                .style("opacity", 1)
+                // Format number with million and thousand separator
+                .html(
+                    `<div class="tooltip-title">${d.key}</div>
                     <div>${d.count} lines of dialogue</div>`
-                    );
-            })
+                );
+        })
             .on("mousemove", (event) => {
                 d3.select("#tooltip-bar")
                     .style(
@@ -228,7 +173,7 @@ class LinesPerEp {
             });
 
         // Update axes
-        vis.xAxisTopG.call(vis.xAxisTop);
-        vis.yAxisTopG.call(vis.yAxisTop);
+        vis.xAxisG.call(vis.xAxis);
+        vis.yAxisG.call(vis.yAxis);
     }
 }

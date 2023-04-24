@@ -1,6 +1,7 @@
 console.log("Hello World");
 
 let showFilter = [];
+let charFilter = [];
 let selectedSeason = "0";
 
 d3.csv("data/export_dataframe.csv").then((_data) => {
@@ -30,8 +31,13 @@ d3.select("#selectCharButton").on("change", function (d) {
     console.log(selectedOption);
     // update config
     charAppearances.config.character = selectedOption;
+    if (selectedOption == "<None>") {
+        charFilter = [];
+    } else {
+        charFilter = [selectedOption];
+    }
 
-    charAppearances.updateVis();
+    filterChar(selectedOption);
 });
 
 d3.select("#selectSeaButton").on("change", function (d) {
@@ -167,20 +173,53 @@ function sortFrequency(a, b) {
 function filterData(i) {
     if (showFilter.length == 0) {
         linesPerChar.data = data;
-        // linesPerEp.data = data;
+        linesPerEp.data = data;
+        renderEp();
     } else {
         if (i == 0) {
             linesPerChar.data = data.filter((d) =>
                 showFilter.includes(d.season)
             );
-            // linesPerEp.data = data.filter((d) => showFilter.includes(d.season));
+            linesPerEp.data = data.filter((d) => showFilter.includes(d.season));
+            renderEp();
         } else {
             linesPerChar.data = data.filter((d) =>
                 showFilter.includes(d.episode)
             );
-            // linesPerEp.data = data.filter((d) => showFilter.includes(d.episode));
         }
     }
     linesPerChar.updateVis();
     // linesPerEp.updateVis();
+}
+
+function filterChar() {
+    if (charFilter.length == 0) {
+        // linesPerEp.data = data;
+    } else {
+        // linesPerEp.data = data.filter((d) => charFilter.includes(d.character));
+    }
+    // linesPerEp.updateVis();
+    charAppearances.updateVis();
+    renderEp();
+}
+
+function renderEp() {
+    if (showFilter.length == 0) {
+        if (charFilter.length == 0) {
+            linesPerEp.data = data;
+        } else {
+            linesPerEp.data = data.filter((d) =>
+                charFilter.includes(d.character)
+            );
+        }
+    } else {
+        if (charFilter.length == 0) {
+            linesPerEp.data = data.filter((d) => showFilter.includes(d.season));
+        } else {
+            linesPerEp.data = data
+                .filter((d) => charFilter.includes(d.character))
+                .filter((d) => showFilter.includes(d.season));
+        }
+    }
+    linesPerEp.updateVis();
 }
