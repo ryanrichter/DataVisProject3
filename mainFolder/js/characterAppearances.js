@@ -8,8 +8,8 @@ class appearancesBarchart {
         // Configuration object with defaults
         this.config = {
             parentElement: _config.parentElement,
-            containerWidth: _config.containerWidth || 400,
-            containerHeight: _config.containerHeight || 200,
+            containerWidth: _config.containerWidth || 500,
+            containerHeight: _config.containerHeight || 300,
             margin: _config.margin || {
                 top: 10,
                 right: 5,

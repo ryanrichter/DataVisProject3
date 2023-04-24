@@ -2,7 +2,7 @@ class CharLines {
     constructor(_config, _data) {
         this.config = {
             parentElement: _config.parentElement,
-            containerWidth: _config.containerWidth || 500,
+            containerWidth: _config.containerWidth || 750,
             containerHeight: _config.containerHeight || 350,
             tooltipPadding: _config.tooltipPadding || 15,
             margin: { top: 40, right: 50, bottom: 120, left: 50 },

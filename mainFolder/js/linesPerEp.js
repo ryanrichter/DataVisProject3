@@ -3,7 +3,7 @@ class LinesPerEp {
         this.config = {
             parentElement: _config.parentElement,
             containerWidth: _config.containerWidth || 1430,
-            containerHeight: _config.containerHeight || 260,
+            containerHeight: _config.containerHeight || 310,
             tooltipPadding: _config.tooltipPadding || 15,
             margin: { top: 40, right: 10, bottom: 10, left: 50 },
         };

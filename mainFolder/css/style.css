@@ -1,65 +1,85 @@
 #tooltip-bar,
 #tooltip-perChar {
-    position: absolute;
-    opacity: 0;
-    background: #fff;
-    box-shadow: 2px 2px 3px 0px rgb(92 92 92 / 0.5);
-    border: 1px solid #ddd;
-    padding: 6px 8px;
-  }
-
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 13px;
-    padding: 30px;
-  }
-  
-  .axis text {
-    font-size: .7rem;
-    fill: #6b6b6b;
-  }
-  
-  .domain, .axis .tick line {
-    stroke: #888;
-  }
-  
-  rect {
-    shape-rendering: crispEdges;
-  }
-  
-  .cat-DoesNotAppear rect {
-    fill: #643d12;
-  }
-  .cat-Appears rect {
-    fill: #fcae54;
-  }
-
-  .timeline-container {
-    width: 700px;
-    margin-bottom: 20px;
-  }
-  .graph-container {
-    width: 420px;
-    margin-bottom: 20px;
-  }
-
-  .side-container {
-    border: 3px solid #fff;
-    padding: 20px;
-    overflow: hidden;
+  position: absolute;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 2px 2px 3px 0px rgb(92 92 92 / 0.5);
+  border: 1px solid #ddd;
+  padding: 6px 8px;
 }
 
-.left-container {
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px;
+  padding: 0px 20px;
+}
+
+.axis text {
+  font-size: .7rem;
+  fill: #6b6b6b;
+}
+
+.domain, .axis .tick line {
+  stroke: #888;
+}
+
+rect {
+  shape-rendering: crispEdges;
+}
+
+.cat-DoesNotAppear rect {
+  fill: #643d12;
+}
+.cat-Appears rect {
+  fill: #fcae54;
+}
+
+.timeline-container {
+  width: 700px;
+  margin-bottom: 20px;
+}
+.graph-container {
+  width: 420px;
+  margin-bottom: 20px;
+}
+
+.side-container {
+  border: 3px solid #fff;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.left-side {
     width: 6%;
     float: left;
     padding: 20px;
     
 }  
 
-.right-container {
+.right-side {
     width: 6%;
     float: right;
     padding: 20px;
     
-}  
+}
 
+.center-container {
+  padding: 20px;
+}
+
+.flex {
+  display: flex;
+}
+
+#selectCharButton {
+  min-width: 150px;
+  margin-right: 950px;
+}
+
+#selectSeaButton {
+  min-width: 100px;
+}
+
+#selectEpButton {
+  min-width: 250px;;
+}
